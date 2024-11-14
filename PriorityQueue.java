@@ -151,9 +151,15 @@ class PriorityQueue<E, P> {
 
     public Node add(E e, P priority) {
 
-        // YOUR CODE GOES HERE
-        return null;
-    }
+                Node newNode = new Node(e, priority, tree.size());
+
+                // Add the new node at the end of the tree & move it
+                tree.add(newNode);
+                pullUp(newNode.idx);
+
+                return newNode;
+        }
+
 
 
     /**
@@ -166,11 +172,15 @@ class PriorityQueue<E, P> {
      * @return: boolean - true if element in queue, else false.
      */
 
-    public boolean contains(E e) {
+     public boolean contains(E e) {
 
-        // ADD YOUR CODE HERE
-        return false;
-    }
+                for (int i = 0; i < tree.size(); i++) {
+                        if (tree.get(i).value().equals(e) && tree.get(i).isValid()) {
+                                return true;
+                        }
+                }
+                return false;
+        }
 
 
     /**
